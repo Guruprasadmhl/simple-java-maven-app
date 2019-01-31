@@ -1,22 +1,16 @@
 pipeline{
- agent any
-tools{
-maven "maven3.6.0"
-jdk "java1.8.0"
-}
-stages{pipeline{
- agent any
-tools{
-maven "maven3.6.0"
-jdk "java1.8.0"
+  agent any
+  tools{
+      maven 'maven3.6.0'
+      jdk 'java1.8.0
 }
 stages{
-stage{"Build"}{
-steps{
+      stage('Build'){
+          steps{
 
-sh "mvn -B DskipTests clean package"
-}
-}
-}
+          sh 'mvn -B DskipTests clean package'
+          }
+      }
+   }
 }
 
