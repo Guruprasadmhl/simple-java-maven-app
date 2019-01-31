@@ -49,17 +49,17 @@ pipeline{
             
            stage('Artifactory configuration'){
               steps{
-                rtserver{
+                rtserver(
                   id: "34.214.222.45",
                     url:"http://34.214.222.45:8081/artifactory",
                     credentialsId:"GuruprasadMSadmin"
-                }
-                rtMavenDeployer{
+                )
+                rtMavenDeployer(
                                 id: "MAVEN_DEPLOYER"
                                 serverId: "http://34.214.222.45:8081/artifactory",
                                 releaseRepo:"libs-release-local",
                                 snapshotRepo:"libs-snapshot-local"
-                  }
+                  )
                 rtMavenResolver{
                     id: "MAVEN_RESOLVER"
                     serverId: "http://34.214.222.45:8081/artifactory",
@@ -67,6 +67,17 @@ pipeline{
                     snapshotRepo:"libs-snapshot"
                 }
               }
+             stage('Exec Maven'{
+               steps{
+                 rtMavenRun(
+                   tool:"maven3.6.0",
+                    pom:'pom.xml'
+                     goals:'clean install',
+                     deployerId:"MAVEN_DEPLOYER",
+                     resolverId:"MAVEN_RESOLVER"
+                   )
+                 }
+               }
 
       stage ('Deploy'){
 
