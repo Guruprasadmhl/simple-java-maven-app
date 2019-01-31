@@ -49,7 +49,7 @@ pipeline{
             
            stage('Artifactory configuration'){
               steps{
-                rtserver(
+                rtServer(
                   id: "34.214.222.45",
                     url:"http://34.214.222.45:8081/artifactory",
                     credentialsId:"GuruprasadMSadmin"
