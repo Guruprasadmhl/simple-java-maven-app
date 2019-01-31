@@ -60,11 +60,12 @@ pipeline{
                                 releaseRepo:"libs-release-local",
                                 snapshotRepo:"libs-snapshot-local"
                   )
-                rtMavenResolver{
+                rtMavenResolver(
                     id: "MAVEN_RESOLVER",
                     serverId: "http://34.214.222.45:8081/artifactory",
                     releaseRepo:"libs-release",
                     snapshotRepo:"libs-snapshot"
+                  )
                 }
               }
              stage('Exec Maven'{
