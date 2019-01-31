@@ -1,5 +1,11 @@
-peline{
- agennt any
+pipeline{
+ agent any
+tools{
+maven "maven3.6.0"
+jdk "java1.8.0"
+}
+stages{pipeline{
+ agent any
 tools{
 maven "maven3.6.0"
 jdk "java1.8.0"
@@ -13,3 +19,4 @@ sh "mvn -0DskipTests clean package"
 }
 }
 }
+
