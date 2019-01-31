@@ -12,35 +12,35 @@ pipeline{
 
     stages{
 
-        stage('Build'){
+        //stage('Build'){
 
-              steps{
+              //steps{
 
-                  sh "mvn -B -DskipTests clean package"
+                  //sh "mvn -B -DskipTests clean package"
 
-                }
+              //  }
 
-            }
+           // }
 
-        stage('Test'){
+       // stage('Test'){
 
-              steps{
+             // steps{
 
-                  sh "mvn test"
+                  //sh "mvn test"
 
-              }
+             // }
+//
+               // post{
+//
+                     // always{
 
-                post{
+                            //junit 'target/surefire-reports/*.xml'
 
-                      always{
+                          //}
 
-                            junit 'target/surefire-reports/*.xml'
+                    // }
 
-                          }
-
-                     }
-
-                }
+               // }
           stage('Clone'){
             steps{
               git branch: 'master', url: "https://github.com/Guruprasadmhl/simple-java-maven-app.git"
@@ -68,7 +68,7 @@ pipeline{
                   )
                 }
               }
-             stage('Exec Maven'{
+             stage('Exec Maven'){
                steps{
                  rtMavenRun(
                    tool:"maven3.6.0",
@@ -89,17 +89,17 @@ pipeline{
                    }
                       
 
-      stage ('Deploy'){
+     // stage ('Deploy'){
 
-            steps {
+           // steps {
 
-                sh 'scp -o StrictHostKeyChecking=no -i /tmp/my.pem target/my-app-1.0-SNAPSHOT.jar centos@54.202.246.243:/tmp/'
-                sh 'ssh -i /tmp/my.pem centos@54.202.246.243 java -jar /tmp/my-app-1.0-SNAPSHOT.jar'
+              //  sh 'scp -o StrictHostKeyChecking=no -i /tmp/my.pem target/my-app-1.0-SNAPSHOT.jar centos@54.202.246.243:/tmp/'
+               // sh 'ssh -i /tmp/my.pem centos@54.202.246.243 java -jar /tmp/my-app-1.0-SNAPSHOT.jar'
                 
 
-              }
+            //  }
 
-      }
+     // }
 
   }
 
