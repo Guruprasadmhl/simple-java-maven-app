@@ -46,7 +46,7 @@ pipeline{
 
             steps {
 
-                scp -o StrictHostKeyChecking=no -i /tmp/my.pem target/my-app-1.0-SNAPSHOT.jar centos@54.202.246.243/tmp/
+                scp -o StrictHostKeyChecking=no -i /tmp/my.pem target/my-app-1.0-SNAPSHOT.jar centos@54.202.246.243:/tmp/
                 ssh -i /tmp/my.pem centos@54.202.246.243 java -jar /tmp/my-app-1.0-SNAPSHOT.jar
 
               }
