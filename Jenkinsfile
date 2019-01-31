@@ -41,6 +41,32 @@ pipeline{
                      }
 
                 }
+          stage('Clone'){
+            steps{
+              git branch: 'master', url: "https://github.com/Guruprasadmhl/simple-java-maven-app.git"
+               }
+           }
+            
+           stage('Artifactory configuration'){
+              steps{
+                rtserver{
+                  id: "34.214.222.45",
+                    url:"http://34.214.222.45:8081/artifactory",
+                    credentialsId:"GuruprasadMSadmin"
+                }
+                rtMavenDeployer{
+                                id: "MAVEN_DEPLOYER"
+                                serverId: "http://34.214.222.45:8081/artifactory",
+                                releaseRepo:"libs-release-local",
+                                snapshotRepo:"libs-snapshot-local"
+                  }
+                rtMavenResolver{
+                    id: "MAVEN_RESOLVER"
+                    serverId: "http://34.214.222.45:8081/artifactory",
+                    releaseRepo:"libs-release",
+                    snapshotRepo:"libs-snapshot"
+                }
+              }
 
       stage ('Deploy'){
 
