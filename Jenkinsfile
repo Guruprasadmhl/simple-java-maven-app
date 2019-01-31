@@ -55,13 +55,13 @@ pipeline{
                     credentialsId:"GuruprasadMSadmin"
                 )
                 rtMavenDeployer(
-                                id: "MAVEN_DEPLOYER"
+                                id: "MAVEN_DEPLOYER",
                                 serverId: "http://34.214.222.45:8081/artifactory",
                                 releaseRepo:"libs-release-local",
                                 snapshotRepo:"libs-snapshot-local"
                   )
                 rtMavenResolver{
-                    id: "MAVEN_RESOLVER"
+                    id: "MAVEN_RESOLVER",
                     serverId: "http://34.214.222.45:8081/artifactory",
                     releaseRepo:"libs-release",
                     snapshotRepo:"libs-snapshot"
