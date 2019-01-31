@@ -14,7 +14,7 @@ stages{
 stage{"Build"}{
 steps{
 
-sh "mvn -0DskipTests clean package"
+sh "mvn -B DskipTests clean package"
 }
 }
 }
