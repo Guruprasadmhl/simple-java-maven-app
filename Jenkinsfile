@@ -51,18 +51,18 @@ pipeline{
               steps{
                 rtServer(
                   id: "ARTIFACTORY_SERVICE",
-                    url:"http://34.214.222.45:8081/artifactory",
-                    credentialsId:"GuruprasadMSadmin"
+                    url: "http://34.214.222.45:8081/artifactory",
+                    credentialsId: "GuruprasadMSadmin"
                 )
                 rtMavenDeployer(
                                 id: "MAVEN_DEPLOYER",
-                                serverId: "http://34.214.222.45:8081/artifactory",
+                                serverId: "ARTIFACTORY_SERVICE",
                                 releaseRepo:"libs-release-local",
                                 snapshotRepo:"libs-snapshot-local"
                   )
                 rtMavenResolver(
                     id: "MAVEN_RESOLVER",
-                    serverId: "http://34.214.222.45:8081/artifactory",
+                    serverId: "ARTIFACTORY_SERVICE",
                     releaseRepo:"libs-release",
                     snapshotRepo:"libs-snapshot"
                   )
