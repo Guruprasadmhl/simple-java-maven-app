@@ -78,6 +78,15 @@ pipeline{
                    )
                  }
                }
+                   
+                   stage('publish build info'){
+                     steps{
+                       rtPublishBuildInfo(
+                         serverId: "http://34.214.222.45:8081/artifactory"
+                      )
+                     }
+                   }
+                      
 
       stage ('Deploy'){
 
