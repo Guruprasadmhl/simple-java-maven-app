@@ -1,57 +1,57 @@
 pipeline{
 
-agent any
+  agent any
 
-tools{
+    tools{
 
-maven 'maven3.6.0'
+      maven 'maven3.6.0'
 
-jdk 'java1.8.0'
+      jdk 'java1.8.0'
 
-}
+    }
 
-stages{
+    stages{
 
-stage('Build'){
+        stage('Build'){
 
-steps{
+              steps{
 
-sh "mvn -B -DskipTests clean package"
+                  sh "mvn -B -DskipTests clean package"
 
-}
+                }
 
-}
+            }
 
-stage('Test'){
+        stage('Test'){
 
-steps{
+              steps{
 
-sh "mvn test"
+                  sh "mvn test"
 
-}
+              }
 
-post{
+                post{
 
-always{
+                      always{
 
-junit 'target/surefire-reports/*.xml'
+                            junit 'target/surefire-reports/*.xml'
 
-}
+                          }
 
-}
+                     }
 
-}
+                }
 
-stage ('Deploy'){
+      stage ('Deploy'){
 
-steps {
+            steps {
 
-sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
+                sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
 
-}
+              }
 
-}
+      }
 
-}
+  }
 
 }
