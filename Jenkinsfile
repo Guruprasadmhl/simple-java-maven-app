@@ -51,6 +51,7 @@ pipeline{
             steps {
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://34.222.34.163:9000 -Dsonar.login=efdedb6a86e7e675d2106f61fde197bb961c3d1a'
             }
+      }
             
            stage('Artifactory configuration'){
               steps{
