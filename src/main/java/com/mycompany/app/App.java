@@ -12,6 +12,7 @@ public class App
 
     public static void main(String[] args) {
         System.out.println(new App().getMessage());
+	System.out.println("Hello to the world of Java");
     }
 
     private final String getMessage() {
